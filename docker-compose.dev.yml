@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  # Base de datos PostgreSQL
+  db:
+    image: postgres:17-alpine
+    container_name: postgres-dev
+    # TODO: Completar configuración del contenedor
+    # 1. Definir variables de entorno para POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DB
+    # 2. Exponer puerto por defecto de PostgreSQL (5432)
+    # 3. Configurar volumen para persistencia de datos
+    # 4. Definir healthcheck para asegurar disponibilidad
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_INITDB_ARGS: ${POSTGRES_INITDB_ARGS}
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Backend (NestJS)
+  backend:
+    # TODO: Configurar servicio de backend para desarrollo
+    # 1. Definir build context y Dockerfile
+    # 2. IMPORTANTE: Usar 'target: builder' o development stage
+    # 3. Montar volumen de código fuente para habilitar HOT-RELOAD
+    # 4. Exponer puerto API (3000) - IMPORTANTE: Debe ser accesible desde la app móvil
+    # 5. Definir variables de entorno (DB Host, usuario, pass, JWT Secret)
+    # 6. CORS: El backend debe permitir conexiones desde la app móvil
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: builder
+    container_name: nest-backend-dev
+    command: npm run start:dev
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
+      DATABASE_NAME: ${POSTGRES_DB}
+      DATABASE_USER: ${POSTGRES_USER}
+      DATABASE_PASSWORD: ${POSTGRES_PASSWORD}
+      JWT_SECRET: super-secret-key
+      FRONTEND_URL: http://192.168.1.105:8081
+    volumes:
+      - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
+
+volumes:
+  postgres_data:

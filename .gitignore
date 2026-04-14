@@ -1,0 +1,39 @@
+# --- General ---
+node_modules/
+**/node_modules/
+.DS_Store
+**/.DS_Store
+.env*
+**/.env*.local
+
+# --- Backend (NestJS) ---
+backend/dist/
+backend/build/
+backend/logs/
+backend/*.log
+
+# --- Frontend (React) ---
+frontend/dist/
+frontend/build/
+frontend/dist-ssr/
+
+# --- Mobile (Expo/React Native) ---
+mobile/.expo/
+mobile/dist/
+mobile/web-build/
+mobile/expo-env.d.ts
+mobile/.kotlin/
+mobile/ios/
+mobile/android/
+mobile/*.jks
+mobile/*.p8
+mobile/*.p12
+mobile/*.key
+mobile/*.mobileprovision
+mobile/.metro-health-check*
+
+# --- IDEs and editors ---
+.vscode/
+.idea/
+*.swp
+*.swo
