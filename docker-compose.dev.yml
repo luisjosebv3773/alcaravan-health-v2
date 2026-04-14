@@ -1,15 +1,8 @@
-version: '3.8'
-
 services:
   # Base de datos PostgreSQL
   db:
     image: postgres:17-alpine
-    container_name: postgres-dev
-    # TODO: Completar configuración del contenedor
-    # 1. Definir variables de entorno para POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DB
-    # 2. Exponer puerto por defecto de PostgreSQL (5432)
-    # 3. Configurar volumen para persistencia de datos
-    # 4. Definir healthcheck para asegurar disponibilidad
+    container_name: alcaravan-health-postgres-dev
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
@@ -27,18 +20,11 @@ services:
 
   # Backend (NestJS)
   backend:
-    # TODO: Configurar servicio de backend para desarrollo
-    # 1. Definir build context y Dockerfile
-    # 2. IMPORTANTE: Usar 'target: builder' o development stage
-    # 3. Montar volumen de código fuente para habilitar HOT-RELOAD
-    # 4. Exponer puerto API (3000) - IMPORTANTE: Debe ser accesible desde la app móvil
-    # 5. Definir variables de entorno (DB Host, usuario, pass, JWT Secret)
-    # 6. CORS: El backend debe permitir conexiones desde la app móvil
     build:
       context: ./backend
       dockerfile: Dockerfile
       target: builder
-    container_name: nest-backend-dev
+    container_name: alcaravan-health-nest-backend-dev
     command: npm run start:dev
     depends_on:
       db:
@@ -51,10 +37,27 @@ services:
       DATABASE_NAME: ${POSTGRES_DB}
       DATABASE_USER: ${POSTGRES_USER}
       DATABASE_PASSWORD: ${POSTGRES_PASSWORD}
-      JWT_SECRET: super-secret-key
-      FRONTEND_URL: http://192.168.1.105:8081
+      JWT_SECRET: ${JWT_SECRET}
+      FRONTEND_URL: ${FRONTEND_URL}
     volumes:
       - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
+
+  # Frontend (React + Vite)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: alcaravan-health-react-frontend-dev
+    ports:
+      - "5173:5173"
+    depends_on:
+      backend:
+        condition: service_started
+    environment:
+      VITE_API_URL: ${VITE_API_URL}
+    volumes:
+      - ./frontend:/usr/src/app
       - /usr/src/app/node_modules
 
 volumes:
