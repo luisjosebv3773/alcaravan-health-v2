@@ -1,0 +1,398 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  background-color: #F7F9FB;
+  font-family: 'Manrope', 'Inter', sans-serif;
+  overflow: hidden;
+}
+
+/* Left Sidebar */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 48px;
+  width: 50%;
+  max-width: 640px;
+  height: 100%;
+  position: relative;
+  background-color: #E8EFF3;
+}
+
+.sidebarBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../../../assets/background_login.png');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.sidebarOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 93, 182, 0.1);
+  backdrop-filter: blur(1px);
+  z-index: 1;
+}
+
+.sidebarContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 576px;
+}
+
+.brandHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 5px;
+  object-fit: contain;
+}
+
+.brandName {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  color: #FFFFFF;
+  letter-spacing: -0.6px;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.06), 0px 4px 3px rgba(0, 0, 0, 0.07);
+}
+
+.title {
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 60px;
+  color: #FFFFFF;
+  letter-spacing: -1.584px;
+  text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.1), 0px 10px 8px rgba(0, 0, 0, 0.04);
+  margin: 0;
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 29px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 24px;
+  max-width: 386px;
+  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.tagsContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.tagItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tagText {
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.tagTextActive {
+  color: #FFFFFF;
+}
+
+.tagTextInactive {
+  color: rgba(255, 255, 255, 0.5); /* Adapted from grey to whiteish since it's on dark bg */
+}
+
+.tagIndicator {
+  height: 4px;
+  border-radius: 12px;
+  width: 48px;
+}
+
+.tagIndicatorActive {
+  background: #FFFFFF;
+}
+
+.tagIndicatorInactive {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Right Side - Form */
+.formSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  flex-grow: 1;
+  background-color: #F7F9FB;
+  padding: 48px;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 448px;
+  gap: 40px;
+}
+
+.formHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formTitle {
+  font-size: 30px;
+  line-height: 36px;
+  color: #2A3439;
+  font-weight: 400;
+  letter-spacing: -0.45px;
+  margin: 0;
+}
+
+.formSubtitle {
+  font-size: 16px;
+  line-height: 24px;
+  color: #566166;
+  font-weight: 400;
+  margin: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inputLabel {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #566166;
+}
+
+.forgotPassword {
+  font-size: 12px;
+  color: #005DB6;
+  text-decoration: none;
+}
+
+.forgotPassword:hover {
+  text-decoration: underline;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 16px;
+  color: #A9B4B9;
+}
+
+.inputField {
+  width: 100%;
+  height: 56px;
+  background: #FFFFFF;
+  border: 1px solid rgba(169, 180, 185, 0.15);
+  border-radius: 10px;
+  padding-left: 48px;
+  padding-right: 48px;
+  font-size: 16px;
+  color: #2A3439;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.inputField::placeholder {
+  color: #A9B4B9;
+}
+
+.inputField:focus {
+  border-color: #005DB6;
+}
+
+.inputAction {
+  position: absolute;
+  right: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #A9B4B9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rememberMe {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: -8px; /* Adjustment to match visual gaps */
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #A9B4B9;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.rememberLabel {
+  font-weight: 500;
+  font-size: 14px;
+  color: #566166;
+  cursor: pointer;
+}
+
+.submitButton {
+  width: 100%;
+  height: 56px;
+  background: #005DB6;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s ease;
+}
+
+.submitButton:hover {
+  background: #004b93;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #566166;
+  font-size: 14px;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid rgba(114, 118, 115, 0.2);
+}
+
+.divider::before {
+  margin-right: 16px;
+}
+
+.divider::after {
+  margin-left: 16px;
+}
+
+.socialAuth {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  width: 100%;
+}
+
+.socialButton {
+  flex: 1;
+  height: 48px;
+  background: #FFFFFF;
+  border: 1px solid rgba(169, 180, 185, 0.15);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #101412;
+  transition: background-color 0.2s ease;
+}
+
+.socialButton:hover {
+  background: #f0f4f8;
+}
+
+.socialIcon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 64px;
+}
+
+.footerLink {
+  font-weight: 700;
+  font-size: 10px;
+  color: #A9B4B9;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.footerLink:hover {
+  color: #566166;
+}
+
+/* Responsivo Básico */
+@media (max-width: 1024px) {
+  .sidebar {
+    display: none;
+  }
+  .formSection {
+    width: 100%;
+    padding: 24px;
+  }
+}
