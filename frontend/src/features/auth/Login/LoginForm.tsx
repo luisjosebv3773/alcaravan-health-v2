@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import { AuthInput } from './AuthInput';
 import { SocialAuthButtons } from './SocialAuthButtons';
@@ -6,6 +7,13 @@ import styles from './Login.module.css';
 
 export const LoginForm: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Aquí iría la lógica de autenticación
+    navigate('/dashboard');
+  };
 
   return (
     <div className={styles.formSection}>
@@ -15,7 +23,7 @@ export const LoginForm: React.FC = () => {
           <p className={styles.formSubtitle}>Ingresa tus credenciales para continuar</p>
         </div>
 
-        <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+        <form className={styles.form} onSubmit={handleLogin}>
           <AuthInput
             label="Correo Electrónico"
             type="email"

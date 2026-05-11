@@ -1,0 +1,628 @@
+/* Dashboard.module.css */
+
+.dashboardContainer {
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #F7F9FB;
+  font-family: 'Inter', 'Manrope', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 256px;
+  background: #FFFFFF;
+  border-right: 1px solid #E5E7EB;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 100;
+}
+
+.sidebarHeader {
+  height: 72px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logoContainer {
+  width: 32px;
+  height: 32px;
+  background: rgba(19, 236, 91, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoImg {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.brandName {
+  font-weight: 800;
+  font-size: 18px;
+  color: #111813;
+  letter-spacing: -0.5px;
+}
+
+.navMenu {
+  flex: 1;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #6B7280;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.navLinkActive {
+  background: #EBF2F9;
+  color: #005EB8;
+}
+
+.navLinkActive .navIcon {
+  color: #005EB8;
+}
+
+.navLink:hover:not(.navLinkActive) {
+  background: #F9FAFB;
+}
+
+/* Main Content */
+.mainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* Prevent flex blowup */
+}
+
+/* Top Header Bar */
+.topHeader {
+  height: 72px;
+  background: #FFFFFF;
+  border-bottom: 1px solid #F0F4F2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Align profile to right */
+  padding: 0 32px;
+  gap: 24px;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.notificationBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #111813;
+  position: relative;
+}
+
+.notificationBadge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  background: #EF4444;
+  border-radius: 50%;
+  border: 2px solid #FFFFFF;
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-left: 1px solid #E5E7EB;
+  padding-left: 24px;
+}
+
+.userInfo {
+  text-align: right;
+}
+
+.userName {
+  display: block;
+  font-weight: 700;
+  font-size: 14px;
+  color: #111813;
+  line-height: 1.2;
+}
+
+.userRole {
+  display: block;
+  font-size: 12px;
+  color: #61896F;
+}
+
+.userAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #E5E7EB;
+  border: 2px solid rgba(19, 236, 91, 0.2);
+  object-fit: cover;
+}
+
+/* Scrollable area */
+.dashboardScroll {
+  padding: 32px;
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 32px;
+  flex: 1;
+}
+
+@media (max-width: 1280px) {
+  .dashboardScroll {
+    grid-template-columns: 1fr;
+  }
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Welcome Section */
+.welcomeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.welcomeTitle {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: 30px;
+  color: #0F172A;
+  margin: 0;
+  letter-spacing: -0.75px;
+}
+
+.welcomeSubtitle {
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  color: #64748B;
+  margin: 4px 0 0;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 12px;
+}
+
+.btnSecondary {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  color: #1E293B;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btnPrimary {
+  background: #005EB8;
+  color: #FFFFFF;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Stat Cards Grid */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.statCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.statLabel {
+  font-size: 10px;
+  font-weight: 700;
+  color: #64748B;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.statTrend {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.trendPositive {
+  background: #F0FDF4;
+  color: #22C55E;
+}
+
+.trendNeutral {
+  background: #F1F5F9;
+  color: #64748B;
+}
+
+.statMain {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.statValue {
+  font-size: 30px;
+  font-weight: 700;
+  color: #1E293B;
+}
+
+.statStatus {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.statusOptimal { color: #22C55E; }
+.statusWarning { color: #F59E0B; }
+
+.progressBarBg {
+  height: 6px;
+  background: #F1F5F9;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  border-radius: 9999px;
+}
+
+/* Body Composition Section */
+.compositionSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+@media (max-width: 900px) {
+  .compositionSection {
+    grid-template-columns: 1fr;
+  }
+}
+
+.compHeader {
+  margin-bottom: 24px;
+}
+
+.compTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1E293B;
+  margin: 0;
+}
+
+.compSubtitle {
+  font-size: 14px;
+  color: #64748B;
+  margin: 4px 0 0;
+}
+
+.radarChart {
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.radarChartPlaceholder {
+  width: 100%;
+  height: 100%;
+  background: #f8fafc; /* Placeholder for chart */
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+}
+
+.metricsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.metricItem {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #F8FAFC;
+}
+
+.metricLabel {
+  font-size: 14px;
+  color: #64748B;
+  font-weight: 500;
+}
+
+.metricValue {
+  font-size: 14px;
+  color: #1E293B;
+  font-weight: 700;
+}
+
+/* Trends Section */
+.trendsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.trendsTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111813;
+  margin: 0;
+}
+
+.trendsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 1024px) {
+  .trendsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.trendCard {
+  background: #FFFFFF;
+  border: 1px solid #F3F4F6;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.trendCardLabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: #61896F;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.trendCardValueRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 12px;
+}
+
+.trendCardValue {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111813;
+}
+
+.trendCardPercent {
+  font-size: 12px;
+  font-weight: 700;
+  color: #13EC5B;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.sparkline {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 32px;
+}
+
+.sparkBar {
+  flex: 1;
+  background: rgba(19, 236, 91, 0.2);
+  border-radius: 2px;
+}
+
+/* Right Sidebar Column */
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sectionLabel {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0F172A;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.appointmentCard {
+  background: #F8FAFC;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.apptTimeRow {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.apptIconBox {
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 94, 184, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #005EB8;
+}
+
+.apptTitle {
+  font-weight: 800;
+  font-size: 16px;
+  color: #0F172A;
+  margin: 0;
+}
+
+.apptSubtitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: #64748B;
+  margin: 2px 0 0;
+}
+
+.doctorRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.doctorAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #CBD5E1;
+}
+
+.doctorName {
+  font-weight: 700;
+  font-size: 14px;
+  color: #1E293B;
+  margin: 0;
+}
+
+.doctorRole {
+  font-size: 10px;
+  font-weight: 700;
+  color: #64748B;
+  text-transform: uppercase;
+}
+
+/* Goals Card */
+.goalsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.goalsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.goalsBadge {
+  background: #EBF2F9;
+  color: #005EB8;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.goalItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.goalLabelRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.goalLabel { color: #1E293B; }
+.goalValue { color: #64748B; }
+
+.goalBarBg {
+  height: 8px;
+  background: #F1F5F9;
+  border-radius: 9999px;
+}
+
+.goalBarFill {
+  height: 100%;
+  background: #005EB8;
+  border-radius: 9999px;
+}

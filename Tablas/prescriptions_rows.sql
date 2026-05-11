@@ -1,0 +1,1 @@
+INSERT INTO "public"."prescriptions" ("id", "consultation_id", "medication_name", "dosage", "frequency", "duration", "notes", "created_at") VALUES ('8f685455-169e-4f36-af9c-e93a457b1bbd', '011975e7-2b22-42bd-b86e-7e53ff05b6ba', 'Paracetamol 500 mg ', '1 tableta', 'Cada tanto tiempo', '2 dias ', null, '2026-01-31 17:27:19.804381+00');
